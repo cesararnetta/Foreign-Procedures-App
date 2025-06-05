@@ -22,11 +22,11 @@ playwright = "*"
 flask-bcrypt = "*"
 flask-jwt-extended = "*"
 requests = "*"
-pdfplumber = "*"
 flask-mail = "*"
 folium = "*"
 flask-migrate = "*"
 tomli = "*"
+pdfplumber = "*"
 
 [requires]
 python_version = "3.13"
