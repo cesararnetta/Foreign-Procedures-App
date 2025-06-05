@@ -13,6 +13,8 @@ import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
 import { Favorites } from "./pages/Favorites";
 import { FollowUp } from "./pages/FollowUp";
+import { ResetPasswordForm } from "./pages/ResetPasswordForm";
+import { ForgotPassword } from "./pages/ForgotPassword";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +35,8 @@ export const router = createBrowserRouter(
       <Route path="/errands/:errand_id" element={<ErrandDetail />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/follow_up" element={<FollowUp />} />
+      <Route path="/reset-password" element={<ResetPasswordForm />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Route>
   )
 );

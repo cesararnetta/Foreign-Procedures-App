@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
+import PropTypes, { array } from "prop-types";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useFavorites } from "../hooks/favoriteReducer";
 import Button from '@mui/material/Button';
-import { useState } from "react";
+import React, { useState } from "react";
 import 'leaflet/dist/leaflet.css';
 import MapViewer from '../components/MapViewer';
 import { favoritesServices } from "../services/favoritesServices";
@@ -81,7 +81,12 @@ export const ErrandDetail = () => {
                                 </button>
                                 {showProcedures && (
                                     <div className="mt-2 border rounded p-2 bg-light overflow-auto" style={{ maxHeight: "300px" }}>
-                                        {singleErrand.procedures}
+                                        {singleErrand.procedures
+                                            .replace(/&lt;br\s*\/?&gt;/g, '<br />')
+                                            .split('<br />')
+                                            .map((linea, i) => (
+                                                <p key={i} className="mb-1">{linea}</p>
+                                            ))}
                                     </div>
                                 )}
                             </div>
@@ -112,7 +117,7 @@ export const ErrandDetail = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 };

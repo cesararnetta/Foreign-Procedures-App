@@ -98,6 +98,25 @@ export const authenticationServices = {
     }
   },
 
+  resetPassword: async (password, token) => {
+    try {
+      const resp = await fetch(`${baseUrl}/api/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await resp.json();
+      return data;
+    } catch (error) {
+      console.error("Error al restablecer la contraseña", error);
+      throw error;
+    }
+  },
+
   createFollowUp: async ({
     errand_name,
     status_type,
@@ -134,33 +153,37 @@ export const authenticationServices = {
     }
   },
 
-  editFollowUp: async ({
-    editTask,
-  }) => {
+  editFollowUp: async ({ id, data }) => {
     const token = localStorage.getItem("jwt-token");
 
     try {
-      const response = await fetch(`${baseUrl}/api/user_follow_ups/${editTask.id}`, {
-        method: "POST",
+      const request = await fetch(`${baseUrl}/api/user_follow_ups/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
-          errand_name:editTask.errand_name,
-          status_type:editTask.status_type,
-          description:editTask.description,
-          reference_date:editTask.reference_date,
+          errand_name: data.errand_name,
+          status_type: data.status_type,
+          description: data.description,
+          reference_date: data.reference_date,
+          // errand_name:item.errand_name,
+          // status_type:item.status_type,
+          // description:item.description,
+          // reference_date:item.reference_date,
         }),
       });
 
-      const data = await response.json();
+      const response = await request.json();
 
-      if (!response.ok) {
-        throw new Error(data.message || "Error al crear tarea de seguimiento");
+      if (!request.ok) {
+        throw new Error(
+          response.message || "Error al crear tarea de seguimiento"
+        );
       }
 
-      return data;
+      return response;
     } catch (error) {
       console.error("Error al crear seguimiento:", error);
       throw error;

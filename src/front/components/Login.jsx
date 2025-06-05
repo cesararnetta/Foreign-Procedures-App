@@ -53,27 +53,6 @@ export const Login = () => {
     }
   };
 
-  const handleSubmitRecoveryPaswword = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      const emailForRecovery = {
-        email: email
-      };
-      const response = await authenticationServices.forgotPassword(emailForRecovery);
-      setSuccessMessageRecoveryEmail("Se te enviara un correo para recueprar la contraseña ✅");
-      setTimeout(() => {
-        setSuccessMessageRecoveryEmail("")
-      }, 1500);
-
-    } catch (error) {
-      console.error('Error al enviar correo de recuperación:', error);
-      setErrorMessageRecoveryEmail("Hay un error, vuelve a intentarlo más tarde ❌")
-    }
-    finally {
-      setIsLoading(false);
-    }
-  }
 
   return (
     <form onSubmit={handleSubmit}> {/* Log in form */}
@@ -124,7 +103,7 @@ export const Login = () => {
           </div>
 
           <div className="mb-3 text-end">
-            <Link onClick={handleSubmitRecoveryPaswword} className="text-decoration-none">
+            <Link to="/forgot-password" className="text-decoration-none">
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
