@@ -22,10 +22,9 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-# Extensions
-jwt = JWTManager(app)
-mail.init_app(app)
-CORS(app)
+
+
+
 
 app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=3)
@@ -48,6 +47,8 @@ app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = os.getenv("MAIL_SENDER")
 app.config['MAIL_PASSWORD'] = os.getenv("APP_MAIL_KEY")
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_SENDER")
+# print("MAIL_USERNAME:", app.config['MAIL_USERNAME'])
+# print("MAIL_PASSWORD:", app.config['MAIL_PASSWORD'])  
 
 db_url = os.getenv("DATABASE_URL")
 if db_url:
@@ -58,6 +59,12 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
+
+# Extensions
+jwt = JWTManager(app)
+mail.init_app(app)
+
+CORS(app)
 
 setup_admin(app)
 setup_commands(app)

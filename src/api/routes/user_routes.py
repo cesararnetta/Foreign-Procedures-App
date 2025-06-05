@@ -108,12 +108,13 @@ def forgot_password():
                                       expires_delta=timedelta(minutes=15),
                                       additional_claims=claims)
 
+
 # Envío del correo tras petición de recuperación de contraseña
     try:
         # Agrego para que sea más versatil de usar. Declaro link también
         # link = os.getenv("VITE_BACKEND_URL")
         # reset_url = f"{link}?token={reset_token}"
-        reset_url = f"http://localhost:3001?token={reset_token}"
+        reset_url = f"{os.getenv('VITE_BASENAME')}/reset-password?token={reset_token}"
         msg = Message('Restablece tú contraseña',
                       recipients=[email, "celfinalproject@gmail.com"],
                       html=f"""<!DOCTYPE html>
@@ -141,7 +142,7 @@ def forgot_password():
               </tr>
               <tr>
                 <td align="center" style="padding: 30px 0;">
-                  <a href="{reset_url}" 
+                  <a href="{reset_url}"
                      style="background-color: #007BFF; color: #ffffff; padding: 14px 28px; text-decoration: none; font-size: 16px; border-radius: 6px; display: inline-block;">
                     Restablecer Contraseña
                   </a>
@@ -168,7 +169,7 @@ def forgot_password():
         return jsonify({"message": "Email enviado"}), 200
     except Exception as e:
         print(e)
-        return jsonify({"message": "Error en el servidor, intenta más tarde"})
+        return jsonify({"message": "Error en el servidor, intenta más tarde"}), 500
 
 
 @user_bp.route('/reset-password', methods=["POST"])

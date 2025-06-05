@@ -79,6 +79,7 @@ export const Signup = () => {
                 value={signUpData.password}
                 onChange={handleChange}
                 fullWidth
+                inputProps={{ minLength: 6 }}
                 required
                 type="password"
               />
