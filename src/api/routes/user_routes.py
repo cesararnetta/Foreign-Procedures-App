@@ -130,7 +130,7 @@ def forgot_password():
             <table width="600" bgcolor="#ffffff" cellpadding="40" cellspacing="0" style="border-radius: 8px;">
               <tr>
                 <td align="center" style="font-size: 24px; font-weight: bold; color: #333;">
-                  <img src="/assets/Logo2-DqIc8Q2w.png" alt="Logo página" style="width: 150px; height: 150px;">
+                  <img src="https://sample-service-name-414l.onrender.com/assets/Logo2-DqIc8Q2w.png" alt="Logo página" style="width: 150px; height: 150px;">
                   <br><br>
                   Recuperación de Contraseña
                 </td>
