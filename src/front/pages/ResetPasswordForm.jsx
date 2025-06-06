@@ -40,8 +40,8 @@ export const ResetPasswordForm = () => {
         <form onSubmit={handleSubmit}>
             <div className="container d-flex align-items-center justify-content-center min-vh-100">
                 <div className="card p-4 shadow-sm" style={{ maxWidth: "400px", width: "100%" }}>
-                    <h3 className="text-center text-primary mb-2">Bienvenido</h3>
-                    <p className="text-center text-muted mb-4">Inicia sesión para continuar</p>
+                    <h3 className="text-center text-primary mb-2">¡Bienvenido!, otra vez</h3>
+                    <p className="text-center text-muted mb-4">¡Recupera el control de tu cuenta!</p>
                     {successMessage && (
                         <div className="alert alert-success text-center" role="alert">
                             {successMessage}
