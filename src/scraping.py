@@ -30,10 +30,6 @@ keyword_categories = {
         "name": "Trabajo por Cuenta Ajena y Propia",
         "description": "Permite trabajar para un empleador o por cuenta propia."
     },
-    "trabajo por cuenta propia": {
-        "name": "Trabajo por Cuenta Ajena y Propia",
-        "description": "Permite trabajar por cuenta propia."
-    },
     "reagrupación familiar": {
         "name": "Reagrupación y Residencia Independiente",
         "description": "Permite reagrupar familiares y obtener residencia propia."

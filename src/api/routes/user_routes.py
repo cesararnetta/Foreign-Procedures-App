@@ -114,7 +114,7 @@ def forgot_password():
         # Agrego para que sea más versatil de usar. Declaro link también
         # link = os.getenv("VITE_BACKEND_URL")
         # reset_url = f"{link}?token={reset_token}"
-        reset_url = f"{os.getenv('VITE_BASENAME')}/reset-password?token={reset_token}"
+        reset_url = f"https://sample-service-name-414l.onrender.com/reset-password?token={reset_token}"
         msg = Message('Restablece tú contraseña',
                       recipients=[email, "celfinalproject@gmail.com"],
                       html=f"""<!DOCTYPE html>
@@ -130,7 +130,7 @@ def forgot_password():
             <table width="600" bgcolor="#ffffff" cellpadding="40" cellspacing="0" style="border-radius: 8px;">
               <tr>
                 <td align="center" style="font-size: 24px; font-weight: bold; color: #333;">
-                  <img src="https://tusitio.com/static/img/Logo2.png" alt="Logo página" style="width: 150px; height: 150px;">
+                  <img src="/asstes/img/Logo2-DqIc8Q2w.png" alt="Logo página" style="width: 150px; height: 150px;">
                   <br><br>
                   Recuperación de Contraseña
                 </td>
